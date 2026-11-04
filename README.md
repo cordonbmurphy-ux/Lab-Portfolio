@@ -20,6 +20,7 @@ Full text: labs/04-QA-Labs.md
 - RBAC and SSO/MFA Testing at a Bank: role matrices and login controls from Flagstar Bank work
 - Entra ID Lab: users, groups, roles, MFA policy in a lab tenant
 - Okta Lab: SSO app integration and lifecycle in a developer tenant
+- Active Directory to Cloud IdP Lab: tiered AD forest build, ADFS, Entra sync, and federation migration package (scripts, data model, and validation in labs/lab5-ad-to-cloud-idp/)
 
 Full text: labs/02-IAM-Labs.md
 
