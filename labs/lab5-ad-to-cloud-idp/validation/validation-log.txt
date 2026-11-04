@@ -1,0 +1,23 @@
+IAM LAB 5 - MODEL VALIDATION LOG
+Model: Meridian Health (fictional lab company) / meridianlab.local / 12 OUs / 8 groups / 13 accounts
+------------------------------------------------------------------------------
+[PASS] M-01 Every account sits in an OU that exists in the model
+       13 accounts checked; bad OU paths: none
+[PASS] M-02 Tier0-Admins contains admin accounts only
+       daily-use accounts in Tier0-Admins: none
+[PASS] M-03 Admin accounts live only in the Tier0-Admin OU
+       admin accounts outside Tier0-Admin OU: none
+[PASS] M-04 Leaver is disabled, moved to Disabled OU, group access removed
+       leaver rows: ['cleaver']
+[PASS] M-05 Every referenced group exists in the model
+       8 groups referenced; missing: none
+[PASS] M-06 Department groups never cross departments
+       cross-department memberships: none
+[PASS] M-07 Account naming convention holds
+       violations: none
+[PASS] M-08 Every department OU has at least one enabled user
+       departments with no enabled user: none
+[PASS] M-09 Salesforce pilot group exists for the ADFS to Entra staged migration
+       pilot members: 3 across departments: ['Clinical', 'IT', 'Revenue Cycle']
+------------------------------------------------------------------------------
+Result: 9/9 checks passed
