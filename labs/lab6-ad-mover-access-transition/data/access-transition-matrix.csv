@@ -1,0 +1,8 @@
+Entitlement,Source,Before,After,Verdict
+Revenue Cycle shared drive (read/write),GG_Revenue_Users,Yes,No,Lose
+Billing system: biller workqueue,GG_Revenue_Users,Yes,No,Lose
+Claims status tool: submitter role,GG_Revenue_Users,Yes,No,Lose
+VPN remote access,GG_VPN_Access,Yes,No,Lose - removed on role change; new role must re-justify
+Clinical shared drive (read/write),GG_Clinical_Users,No,Yes,Gain
+EHR lab tenant: clinical viewer,GG_Clinical_Users,No,Yes,Gain
+Clinic schedule board (edit),GG_Clinical_Users,No,Yes,Gain
