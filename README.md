@@ -21,6 +21,7 @@ Full text: labs/04-QA-Labs.md
 - Entra ID Lab: users, groups, roles, MFA policy in a lab tenant
 - Okta Lab: SSO app integration and lifecycle in a developer tenant
 - Active Directory to Cloud IdP Lab: tiered AD forest build, ADFS, Entra sync, and federation migration package (scripts, data model, and validation in labs/lab5-ad-to-cloud-idp/)
+- Active Directory Mover Lab: department transfer access transition on the Lab 5 directory, what a mover loses, gains, and keeps, with the add-only mistake caught by verification (package in labs/lab6-ad-mover-access-transition/)
 
 Full text: labs/02-IAM-Labs.md
 
