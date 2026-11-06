@@ -182,6 +182,32 @@ Full log: 9 of 9 checks passed, saved with the package. Ten live-build validatio
 What this proves
 Active Directory design judgment (tiering, separation of admin and daily accounts, leaver discipline) plus the hybrid identity storyline employers ask about: ADFS federation, scoped directory sync, and a piloted federation migration with rollback. Design and scripts are complete and verified at the model layer; live execution evidence is added when the build runs.
 
+## IAM Lab 6: Active Directory Mover, Department Transfer Access Transition
+
+Label: Lab environment only. Built 2026-11-06 from the department-transfer exercise posted by Cyber and Chill (@cyberandchill). Runs on the Lab 5 Meridian Health directory. Not employer experience with Active Directory movers.
+
+Business problem
+Movers get forgotten: a transfer processed as add-only leaves the employee holding both departments' entitlements, which is privilege accumulation, an audit finding, and sometimes a segregation-of-duties conflict. This lab performs the transfer as one controlled change and proves the end state.
+
+What was built (package: labs/lab6-ad-mover-access-transition/)
+- Transfer model for one mover (mdoyle, Revenue Cycle Manager to Clinical Operations Supervisor): group-to-entitlement mapping, expected lose / gain / keep, and the policy that per-person grants like VPN are removed on role change and re-justified by the new role.
+- Access transition matrix: 7 entitlements, 4 lost (Revenue Cycle share, billing workqueue, claims tool, VPN), 3 gained (Clinical share, EHR lab clinical viewer, clinic schedule board), identity kept intact (same account and SID, email, MFA enrollment, still enabled).
+- Three PowerShell scripts: before snapshot, the move itself (removes before it adds, refuses an account the model does not describe, supports -WhatIf), and live verification that throws on any residual old-department access.
+- The add-only mistake reproduced on the model as a defect case: it keeps all 4 entitlements that should have been lost, including a billing workqueue held at the same time as a clinical viewer role.
+
+Validation (executed 2026-11-06, model layer)
+| ID | Case | Expected | Result |
+|---|---|---|---|
+| T-04 | Lose / gain diff | Exactly the declared transition | Pass |
+| T-05 | Residual old-department access | None | Pass |
+| T-06 | Transition matrix vs computed model | Fully consistent | Pass |
+| T-07 | Add-only move simulation | Residual flagged, all 4 entitlements | Pass |
+
+Full log: 8 of 8 checks passed, saved with the package. Eight live-build validation cases (MV-01 to MV-08) are written in the runbook and fill in when the move runs on the Lab 5 VM.
+
+What this proves
+Joiner-mover-leaver discipline at the mover step, where access reviews actually find problems: entitlement diffing from group membership, removal and addition in one change window, per-person grant re-justification, and verification that fails loudly on residual access instead of assuming the move worked.
+
 ---
 
 Roadmap note for the portfolio
