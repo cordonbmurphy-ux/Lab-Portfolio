@@ -1,0 +1,21 @@
+IAM LAB 6 - MODEL VALIDATION LOG
+Model: Meridian Health (fictional lab company) / meridianlab.local / mover mdoyle (Revenue Cycle -> Clinical)
+------------------------------------------------------------------------------
+[PASS] T-01 Every referenced group exists in the model with entitlements defined
+       3 groups referenced; problems: none
+[PASS] T-02 Before access is exactly the old department entitlements plus any kept entitlements
+       computed before: 4 entitlements; expected: 4
+[PASS] T-03 After access is exactly the new department entitlements plus any kept entitlements
+       computed after: 3 entitlements; expected: 3
+[PASS] T-04 Lose set and gain set match the declared transition exactly
+       lose: ['Billing system: biller workqueue', 'Claims status tool: submitter role', 'Revenue Cycle shared drive (read/write)', 'VPN remote access']; gain: ['Clinic schedule board (edit)', 'Clinical shared drive (read/write)', 'EHR lab tenant: clinical viewer']
+[PASS] T-05 No residual old-department entitlements or groups after the move
+       residual entitlements: none; residual groups: none
+[PASS] T-06 Access transition matrix matches the computed before / after / lose / gain sets
+       matrix rows: 7; before/after/lose/gain all consistent: True
+[PASS] T-07 Add-only move leaves residual access, and the residual check flags all of it
+       naive move keeps 4 entitlements that should have been lost: ['Billing system: biller workqueue', 'Claims status tool: submitter role', 'Revenue Cycle shared drive (read/write)', 'VPN remote access']
+[PASS] T-08 Identity persists across the move: account unchanged and enabled, OU/department/title change
+       account: mdoyle; enabled: True; kept identity facts declared: 3
+------------------------------------------------------------------------------
+Result: 8/8 checks passed
